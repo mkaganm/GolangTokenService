@@ -4,7 +4,7 @@ import "io/ioutil"
 import "gopkg.in/yaml.v3"
 
 type ApiKey struct {
-	xApiKey string `yaml:"x-api-key"`
+	XApiKey string `yaml:"x-api-key"`
 }
 
 func (ApiKey) GetXApiKey() *ApiKey {
