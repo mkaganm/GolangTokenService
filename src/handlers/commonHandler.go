@@ -52,7 +52,7 @@ func SendUnAuthWrite(w http.ResponseWriter) {
 	w.WriteHeader(http.StatusUnauthorized)
 	m := make(map[string]string)
 	m["status"] = "unauthorized"
-	m["message"] = "you are unauthorized"
+	m["message"] = "you are unauthorized!"
 	jsonM, _ := json.Marshal(m)
 
 	_, err := w.Write(jsonM)
@@ -62,10 +62,8 @@ func SendUnAuthWrite(w http.ResponseWriter) {
 func NotPost(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "POST" {
-
 		SendUnAuthWrite(w)
-
-		log.Panic("not post")
+		log.Panic("request is not post!")
 	}
 
 }
