@@ -2,7 +2,7 @@ package main
 
 import (
 	"GolangJWTService/src/errors"
-	handlers "GolangJWTService/src/handlers"
+	"GolangJWTService/src/handlers"
 	"log"
 	"net/http"
 )
