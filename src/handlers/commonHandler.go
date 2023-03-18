@@ -9,10 +9,12 @@ import (
 	"strings"
 )
 
+// SetContentJson this function sets content as json
 func SetContentJson(w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "application/json")
 }
 
+// ValidateToken this function validates the token
 func ValidateToken(next func(w http.ResponseWriter, r *http.Request)) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
@@ -43,10 +45,10 @@ func ValidateToken(next func(w http.ResponseWriter, r *http.Request)) http.Handl
 	})
 }
 
+// SendUnAuthWrite this function returns unauthorized response
 func SendUnAuthWrite(w http.ResponseWriter) {
 
 	SetContentJson(w)
-
 	log.Default().Print("unauthorized trying")
 
 	w.WriteHeader(http.StatusUnauthorized)
@@ -59,6 +61,7 @@ func SendUnAuthWrite(w http.ResponseWriter) {
 	errors.CheckErr(err)
 }
 
+// NotPost This function checks if the incoming request is a post.
 func NotPost(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method != "POST" {
