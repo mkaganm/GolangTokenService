@@ -13,6 +13,7 @@ import (
 
 var SECRET = []byte("super-secret-auth-key")
 
+// GetToken serving token handler
 func GetToken(w http.ResponseWriter, r *http.Request) {
 
 	NotPost(w, r)
@@ -44,6 +45,7 @@ func GetToken(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// CreateToken this function generates tokens
 func CreateToken() (string, error) {
 
 	token := jwt.New(jwt.SigningMethodHS256)
