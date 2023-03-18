@@ -1,6 +1,9 @@
 package models
 
-import "io/ioutil"
+import (
+	"GolangJWTService/src/errors"
+	"io/ioutil"
+)
 import "gopkg.in/yaml.v3"
 
 type ApiKey struct {
@@ -11,7 +14,8 @@ func (ApiKey) GetXApiKey() *ApiKey {
 
 	yamlFile, _ := ioutil.ReadFile("resources/ApiKey.yaml")
 	data := &ApiKey{}
-	_ = yaml.Unmarshal(yamlFile, data)
+	err := yaml.Unmarshal(yamlFile, data)
+	errors.CheckErr(err)
 
 	return data
 }
