@@ -12,9 +12,12 @@ type ApiKey struct {
 
 func (ApiKey) GetXApiKey() *ApiKey {
 
-	yamlFile, _ := ioutil.ReadFile("resources/ApiKey.yaml")
+	yamlFile, err := ioutil.ReadFile("resources/ApiKey.yaml")
+	errors.CheckErr(err)
+
 	data := &ApiKey{}
-	err := yaml.Unmarshal(yamlFile, data)
+
+	err = yaml.Unmarshal(yamlFile, data)
 	errors.CheckErr(err)
 
 	return data
