@@ -10,9 +10,7 @@ type ApiKey struct {
 func (ApiKey) GetXApiKey() *ApiKey {
 
 	yamlFile, _ := ioutil.ReadFile("resources/ApiKey.yaml")
-
 	data := &ApiKey{}
-
 	_ = yaml.Unmarshal(yamlFile, data)
 
 	return data
