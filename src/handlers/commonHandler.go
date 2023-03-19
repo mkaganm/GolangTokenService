@@ -38,6 +38,8 @@ func ValidateToken(next func(w http.ResponseWriter, r *http.Request)) http.Handl
 
 			if token.Valid {
 				next(w, r)
+			} else {
+				SendUnAuthWrite(w)
 			}
 		} else {
 			log.Default().Print("Header.Token is empty")
