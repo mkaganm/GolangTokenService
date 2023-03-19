@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/GolangJWTService.iml" filepath="$PROJECT_DIR$/.idea/GolangJWTService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../PetHotelAPI/.idea/PetHotelAPI.iml" filepath="$PROJECT_DIR$/../PetHotelAPI/.idea/PetHotelAPI.iml" />
     </modules>
   </component>
 </project>

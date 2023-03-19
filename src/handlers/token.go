@@ -11,8 +11,6 @@ import (
 	"time"
 )
 
-var SECRET = []byte("super-secret-auth-key")
-
 // GetToken serving token handler
 func GetToken(w http.ResponseWriter, r *http.Request) {
 
@@ -21,7 +19,7 @@ func GetToken(w http.ResponseWriter, r *http.Request) {
 
 	if r.Header["X-Api-Key"] != nil {
 
-		if auth.CheckPassword(r.Header["X-Api-Key"][0], models.ApiKey{}.GetXApiKey().XApiKey) {
+		if auth.CheckPassword(r.Header["X-Api-Key"][0], []byte(models.ApiKey{}.GetXApiKey().XApiKey)) {
 
 			token, err := CreateToken()
 			errors.CheckErr(err)
@@ -49,12 +47,10 @@ func GetToken(w http.ResponseWriter, r *http.Request) {
 func CreateToken() (string, error) {
 
 	token := jwt.New(jwt.SigningMethodHS256)
-
 	claims := token.Claims.(jwt.MapClaims)
-
 	claims["exp"] = time.Now().Add(time.Hour).Unix()
 
-	tokenStr, err := token.SignedString(SECRET)
+	tokenStr, err := token.SignedString([]byte(models.ApiKey{}.GetXApiKey().SecretKey))
 	errors.CheckErr(err)
 
 	return tokenStr, nil
