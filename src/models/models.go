@@ -7,7 +7,8 @@ import (
 import "gopkg.in/yaml.v3"
 
 type ApiKey struct {
-	XApiKey string `yaml:"x-api-key"`
+	XApiKey   string `yaml:"x-api-key"`
+	SecretKey string `yaml:"secret-key"`
 }
 
 func (ApiKey) GetXApiKey() *ApiKey {
