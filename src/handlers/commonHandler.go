@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"GolangJWTService/src/errors"
+	"GolangJWTService/src/models"
 	"encoding/json"
 	"github.com/golang-jwt/jwt/v4"
 	"log"
@@ -28,7 +29,7 @@ func ValidateToken(next func(w http.ResponseWriter, r *http.Request)) http.Handl
 				if !ok {
 					SendUnAuthWrite(w)
 				}
-				return SECRET, nil
+				return []byte(models.ApiKey{}.GetXApiKey().SecretKey), nil
 			})
 
 			if err != nil {
