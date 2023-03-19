@@ -10,7 +10,7 @@ func PasswordToHash(password string) (string, error) {
 
 // CheckPassword This function returns a boolean value
 // by comparing the password and hash.
-func CheckPassword(password, hash string) bool {
+func CheckPassword(password string, hash []byte) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil
 }
